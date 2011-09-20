@@ -1,0 +1,18 @@
+A faire
+- Revoir fichier d'install base, création des bases ok, message echec dans plugin
+- Créer système de code VIP simple
+- Possibilité insertion formulaire dans article <bbb_demo> <bbb_groups> <bbb_X>
+- Finir l'article sur SPIP-contrib
+    - Ajout dans la doc
+        - Depuis admin ajout contact permet seulement d'inviter une seul personne
+        - Depuis le formulaire publique accés salle demo publique (all the world)
+
+
+Changelog 31012011
+- Correction du cron de suppression des participants
+- Correction suppression utilisateur (modération lors d'une connexion de l'utilisateur)
+- Nettoyage des class inutile dans bbb_api.php
+
+Changelog 24122010
+- Ajout d'un bouton sur la fiche auteur
+- Ajout de quelques bafouilles pour l'aide

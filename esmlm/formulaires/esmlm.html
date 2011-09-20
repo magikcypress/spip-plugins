@@ -1,0 +1,25 @@
+<h3><:esmlm:liste_diffusion:></h3>
+
+<div class="formulaire_spip formulaire_editer formulaire_#FORM" id="formulaire_#FORM-#ENV{id,new}">
+  [<p class="reponse_formulaire reponse_formulaire_ok">(#ENV*{message_ok})</p>]
+  [(#ENV{editable})
+	  [<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+	  <form action="#ENV{action}" method="post" enctype="multipart/form-data"><div>
+	    #ACTION_FORMULAIRE{#ENV{action}}
+	        #SET{name,email_sub}
+	        #SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+	        #SET{obli,'obligatoire'}
+                <ul>
+	        <li class="editer_[(#GET{name})][ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+	          <label for="#GET{name}"><:esmlm:label_inscription_email:></label>
+	          [<span class='erreur_message'>(#GET{erreurs})</span>]
+                    <input type="text" class="text" name="#GET{name}" id="#GET{name}" size="50" maxlength="255" value="#ENV{#GET{name}}" />
+	        </li>
+                </ul>
+                <INCLURE{fond=public/esmlm_abonnement_plusieurs_listes_checkbox,env} />
+
+	      <p class="boutons"><span class="image_loading">&nbsp;</span><input type="submit" class="submit" value="<:esmlm:bouton_inscription:>" /></p>
+	  </div></form>
+	]
+</div>
+

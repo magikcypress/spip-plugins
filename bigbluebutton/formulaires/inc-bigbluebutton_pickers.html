@@ -1,0 +1,101 @@
+<script type='text/javascript' src='#CHEMIN{js/dates.js}'></script>
+<script type='text/javascript' src='#CHEMIN{js/jquery.datePicker.js}'></script>
+<script type='text/javascript' src='#CHEMIN{js/jquery.timePicker.js}'></script>
+<script type='text/javascript'>
+Date.dayNames = ['<:date_jour_1:>', '<:date_jour_2:>', '<:date_jour_3:>', '<:date_jour_4:>', '<:date_jour_5:>', '<:date_jour_6:>', '<:date_jour_7:>'];
+Date.abbrDayNames = ['<:date_jour_1_abbr:>', '<:date_jour_2_abbr:>', '<:date_jour_3_abbr:>', '<:date_jour_4_abbr:>', '<:date_jour_5_abbr:>', '<:date_jour_6_abbr:>', '<:date_jour_7_abbr:>'];
+Date.monthNames = ['<:date_mois_1:>', '<:date_mois_2:>', '<:date_mois_3:>', '<:date_mois_4:>', '<:date_mois_5:>', '<:date_mois_6:>', '<:date_mois_7:>', '<:date_mois_8:>', '<:date_mois_9:>', '<:date_mois_10:>', '<:date_mois_11:>', '<:date_mois_12:>'];
+Date.abbrMonthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+Date.firstDayOfWeek = 1;
+Date.format = 'dd/mm/yyyy';
+$.dpText = {
+	TEXT_PREV_YEAR		:	'<:bigbluebutton:annee_precedente|texte_script:>',
+	TEXT_PREV_MONTH		:	'<:bigbluebutton:mois_precedent|texte_script:>',
+	TEXT_NEXT_YEAR		:	'<:bigbluebutton:annee_suivante|texte_script:>',
+	TEXT_NEXT_MONTH		:	'<:bigbluebutton:mois_suivant|texte_script:>',
+	TEXT_CLOSE		:	'<:bigbluebutton:fermer|texte_script:>',
+	TEXT_CHOOSE_DATE	:	'<img src=\'#CHEMIN{img_pack/picker-16.gif}\' alt=\'<:bigbluebutton:afficher_calendrier|attribut_html:>\' />',
+	TITLE_CHOOSE_DATE	:	'<:bigbluebutton:afficher_calendrier|texte_script:>'
+}
+$(function()
+{
+	$('input.date').datePicker({startDate:'01/01/1900'}).dpSetPosition($.dpConst.POS_TOP, $.dpConst.POS_RIGHT);
+	$('#bbb_date_debut').bind(
+		'dpClosed',
+		function(e, selectedDates)
+		{
+			var d = selectedDates[0];
+			if (d) {
+				d = new Date(d);
+				$('#date_fin').dpSetStartDate(d.addDays(0).asString());
+			}
+		}
+	);
+	$('#bbb_date_fin').bind(
+		'dpClosed',
+		function(e, selectedDates)
+		{
+			var d = selectedDates[0];
+			if (d) {
+				d = new Date(d);
+				$('#date_debut').dpSetEndDate(d.addDays(0).asString());
+			}
+		}
+	);
+	if ($('#repetitions_picker').length){
+		$('#repetitions_picker').datePicker({
+			inline:true,
+			selectMultiple:true,
+			startDate:'01/01/1900'
+		})
+		.bind(
+			'dateSelected',
+			function(e, selectedDate, $td, state)
+			{
+				var dates = $(this).dpGetSelected();
+				var t=$('#repetitions_picker').siblings('textarea').eq(0);
+				t.html("");
+				d = new Date();
+				for (i=0;i<dates.length;i++){
+					if (dates[i]){
+						d.setTime(dates[i]);
+						t.append(d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear()+' ');
+					}
+				}
+			}
+		)
+		.siblings('textarea');
+		var dates_init = $('#repetitions_picker').siblings('textarea').eq(0).html().split(' ');
+		for (i=0;i<dates_init.length;i++)
+			if (dates_init[i].length)
+				$('#repetitions_picker').dpSetSelected(dates_init[i],true,false);
+		$('#repetitions_picker').dpSetDisplayedMonth(dates_init[0].split('/')[1]-1,dates_init[0].split('/')[2]);
+		$('div.ajouter_repetitions').addClass('cachee');
+	}
+	$("#bbb_heure_debut, #bbb_heure_fin").timePicker();
+	// Store time used by duration.
+	var oldTime = $.timePicker("#bbb_heure_debut").getTime();
+	
+	// Keep the duration between the two inputs.
+	$("#bbb_heure_debut").change(function() {
+	  if ($("#bbb_heure_fin").val()) { // Only update when second input has a value.
+	    // Calculate duration.
+	    var duration = ($.timePicker("#bbb_heure_fin").getTime() - oldTime);
+	    var time = $.timePicker("#bbb_heure_debut").getTime();
+	    // Calculate and update the time in the second input.
+	    $.timePicker("#bbb_heure_fin").setTime(new Date(new Date(time.getTime() + duration)));
+	    oldTime = time;
+	  }
+	});
+	// Validate.
+	/*$("#time4").change(function() {
+	  if($.timePicker("#time3").getTime() > $.timePicker(this).getTime()) {
+	    $(this).addClass("error");
+	  }
+	  else {
+	    $(this).removeClass("error");
+	  }
+	});*/
+
+});
+</script>

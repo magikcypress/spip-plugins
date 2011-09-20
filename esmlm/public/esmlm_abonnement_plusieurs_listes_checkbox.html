@@ -1,0 +1,17 @@
+#SET{name,esmlm_ids}
+#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+#SET{obli,'obligatoire'}
+<li class="editer_[(#GET{name})][ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+  [<span class='erreur_message'>(#GET{erreurs})</span>]
+  	<p class="explication"><:esmlm:message_inscription_listes:></p>
+  	<ul>
+    <BOUCLE_esmlm(spip_esmlm_lists){par esmlm_id}>
+    <li>
+    <div class="choix">
+      <input type="checkbox" name="#GET{name}[]" class="checkbox" id='#GET{name}_#COMPTEUR_BOUCLE' value="#ESMLM_ID" />
+      <label for="#GET{name}_#COMPTEUR_BOUCLE">#ESMLM_INSCRIPTION</label>
+    </div>
+    </li>
+    </BOUCLE_esmlm>
+    </ul>
+</li>

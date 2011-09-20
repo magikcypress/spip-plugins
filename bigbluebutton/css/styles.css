@@ -1,0 +1,48 @@
+.error {
+    color: #cc0000;
+    font-weight: bold;
+}
+
+.noerror {
+    color: #000;
+    font-weight: normal;
+}
+
+h4 {
+	font-weight: bold;
+	margin: 0 0 10px 0;
+	padding: 0;
+	font-size: 12px;
+}
+
+.editer_parent {padding-#GET{left}:10px;background:#fff;}
+.editer_parent label {margin-#GET{left}:0;display:block;float:left;padding:2px 0;}
+
+.editer_horaire {padding-top:0;margin-top:0;}
+.editer_horaire label {margin:0;display:inline;width:auto;float:none;}
+li.editer_date,
+li.editer_date li {clear:left;}
+li.editer_date_debut_fin label { vertical-align: top; }
+
+input.date {width:7em;padding-right:20px;}
+span.afficher_horaire label {float:none;display:inline;padding:0;margin:0;}
+input.heure {width:4em;}
+
+li.editer_date label.heure {display:none;}
+li.editer_date label {display:inline;float:none;margin:0;}
+
+.editer_inscription .choix {display:inline;}
+.editer_inscription .choix input.text {width:50px;vertical-align:top;}
+
+/* le picker */
+a.dp-choose-date { display: inline-block; padding: 0; margin: 3px 0 0 -19px; vertical-align: bottom; }
+#repetitions_picker {float:left;}
+li.editer_repetitions textarea {float:left;width:110px;height:11em;}
+
+div.time-picker {font-size:11px;  width:5em; /* needed for IE */}
+
+
+.hor-minimalist-b caption { font-weight: bold; font-size: 15px; }
+.hor-minimalist-b th{color:#000;border-bottom:2px solid #000;padding:10px 8px;}
+.hor-minimalist-b td{border-bottom:1px solid #ccc;color:#000;padding:6px 8px;width:100%;}
+.hor-minimalist-b tbody tr:hover td{color:#ccc;}

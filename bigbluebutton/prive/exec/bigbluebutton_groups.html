@@ -1,0 +1,25 @@
+<h1><:bigbluebutton:groups_lists:></h1>
+<B_bbb_groups>
+      #ANCRE_PAGINATION
+      	#PAGINATION{page}
+<ul class="liste_items">
+<BOUCLE_bbb_groups(spip_bbb_groups){par bbb_id_groups} {inverse} {pagination 10}>
+    <h2 style="text-align: right;"><:bigbluebutton:date_creation:> : #GET{bbb_date_groups,#BBB_DATE_GROUPS|affdate{d-m-Y H:i:s}}</h2>
+  <li class="item">
+    <p><strong><:bigbluebutton:groups_name:></strong> #BBB_GROUPS_NAME</p>
+    <div class="actions">
+            [(#BOUTON_ACTION{<:bigbluebutton:groups_supprimer:>,#URL_ACTION_AUTEUR{bigbluebutton_delete_groups,#BBB_ID_GROUPS,#SELF},ajax,<:bigbluebutton:supprimer_confirmer:>})]
+    </div>
+  </li>
+</BOUCLE_bbb_groups>
+</ul>
+</B_bbb_groups>
+<div class="cadre cadre-info"><:bigbluebutton:groups_aucun:></div>
+<//B_bbb_groups>
+[(#REM)</div>]
+<!--#navigation-->
+  <INCLURE{fond=prive/bigbluebutton_navigation}>
+<!--/#navigation-->
+<!--#extra-->
+
+<!--/#extra-->

@@ -1,0 +1,23 @@
+<h1><:esmlm:liste_lettres:></h1>
+<ul class="liste_items">
+<BOUCLE_esmlm(spip_esmlm_lists){par esmlm_id}>
+  <li class="item">
+    <p><strong><:esmlm:inscription:></strong> #ESMLM_INSCRIPTION<br />
+    <strong><:esmlm:returnpath:></strong> #ESMLM_CHEMIN_RETOUR<br />
+    <strong><:esmlm:objetliste:></strong> #ESMLM_SUJET
+    </p>
+    <div class="actions">
+	    <a href="[(#URL_ECRIRE{esmlm_list_edit}|parametre_url{esmlm_id,#ESMLM_ID})]"><:esmlm:modifier:></a>
+            [(#BOUTON_ACTION{<:esmlm:supprimer:>,#URL_ACTION_AUTEUR{esmlm_delete,#ESMLM_ID,#SELF},ajax,<:esmlm:supprimer_confirmer:>})]
+    </div>
+  </li>
+</BOUCLE_esmlm>
+</ul>
+
+<!--#navigation-->
+<INCLURE{fond=prive/esmlm_navigation}>
+<!--/#navigation-->
+
+<!--#extra-->
+
+<!--/#extra-->

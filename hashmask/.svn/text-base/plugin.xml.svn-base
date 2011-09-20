@@ -1,0 +1,31 @@
+<plugin>
+	<nom> <!-- Nom du plugin -->
+	hashmask
+	</nom>
+	<auteur>	<!-- Auteur du plugin -->
+	cyp
+	</auteur>
+	<version>
+	0.2
+	</version>
+	<etat>
+	stable
+	</etat>
+	<description>
+	<multi>[fr]hashmask permet de confirmer si vous avez tap&eacute; le bon mot de passe
+		Jquery propos&eacute; par Chris Dary <umbrae@gmail.com>
+		http://lab.arc90.com/2009/07/09/hashmask-another-more-secure-experiment-in-password-masking/	
+	</multi>	</description>
+	<lien>http://www.spip-contrib.net/Hashmask</lien>
+	<prefix>hashmask</prefix>
+	<pipeline>
+		<nom>insert_head</nom>
+		<action>insert_head</action>
+		<inclure>hashmask_fonctions.php</inclure>
+	</pipeline>
+    <icon>
+    images/hashmask.png
+    </icon>
+	<necessite id="SPIP" version="[1.9.0;]" />
+	<categorie>auteur</categorie>
+</plugin>

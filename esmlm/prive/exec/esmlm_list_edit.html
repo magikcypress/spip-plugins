@@ -1,0 +1,12 @@
+<h1><:esmlm:modifier_message:></h1>
+[(#REM)<div class="ajax">]
+<B_esmlm>
+<BOUCLE_esmlm(spip_esmlm_lists){esmlm_id=#ENV{esmlm_id}}>
+    #FORMULAIRE_ESMLM_LIST_EDIT{#ENV{esmlm_id,-1}}
+</BOUCLE_esmlm>
+</B_esmlml>
+
+[(#REM)</div>]
+<!--#navigation-->
+<INCLURE{fond=prive/esmlm_navigation}>
+<!--/#navigation-->

@@ -1,0 +1,85 @@
+<plugin>
+	<nom>bigbluebutton</nom>
+	<auteur>
+         cyp &copy; 2010 - Distribu&eacute; sous licence GNU/GPL
+	</auteur>
+	<version>0.3</version>
+        <version_base>0.3</version_base>
+	<etat>dev</etat>
+	<description>
+Gestion des salles avec BigBlueButton et son API (http://www.bigbluebutton.org/).
+
+{{{Installation}}}
+
+Installer le plugins comme expliqué ici : http://www.spip.net/fr_article3396.html
+
+{{{Demo des salles }}}
+
+Pour voir, affichez la page de test ?page=demo/salle
+
+{{{Questions fréquentes}}}
+
+{{Vous avez une erreur lors de la création d'une salle}}
+-* Utilisez vous BigBlueButton 0.7.
+-* Avez vous renseigné l'URL vers le serveur bigbluebutton et sa clé dans la configuration
+
+{{Si vous lisez cette erreur: "Unable to display the meetings. Please check the url of the bigbluebutton server AND check to see if the bigbluebutton server is running."?}}
+
+Assurez vous d'ajouter "/bigbluebutton/" à la fin de l'URL dans la configuration.
+
+Exemple:
+-* {{Incorrect}} - "http://example.com/"
+-* {{Correct}} - "http://example.com/bigbluebutton/"
+
+{{{Sur le syst&egrave;me de webconf&eacute;rence BigBlueButton}}}
+
+{{Comment récuperer la cle api ?}}
+-* Dans : /var/lib/tomcat6/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties
+-* variable : beans.dynamicConferenceService.securitySalt
+-* http://code.google.com/p/bigbluebutton/wiki/FAQ#Where_is_the_security_salt_located?
+
+{{Delai d'expiration de la consultation}}
+-* Dans : /var/lib/tomcat6/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties
+-* variable : minutesElapsedBeforeMeetingExpiration=60
+
+	</description>
+	<lien>[Documentation->http://www.spip-contrib.net/bigbluebutton]</lien>
+        <prefix>bigbluebutton</prefix>
+	<icon>img_pack/bigbluebutton-64.png</icon>
+	<install>base/bigbluebutton.php</install>
+        <options>bigbluebutton_options.php</options>
+        <pipeline>
+            <nom>declarer_tables_principales</nom>
+            <inclure>base/bigbluebutton.php</inclure>
+        </pipeline>
+	<pipeline>
+	    <nom>declarer_tables_interfaces</nom>
+	    <inclure>base/bigbluebutton.php</inclure>
+	</pipeline>
+	<pipeline>
+            <nom>header_prive</nom>
+            <inclure>bigbluebutton_pipelines.php</inclure>
+	</pipeline>
+        <pipeline>
+            <nom>autoriser</nom>
+            <inclure>bigbluebutton_autoriser.php</inclure>
+        </pipeline>
+	<pipeline>
+            <nom>affiche_droite</nom>
+            <inclure>bigbluebutton_pipelines.php</inclure>
+	</pipeline>
+	<pipeline>
+            <nom>taches_generales_cron</nom>
+            <inclure>bigbluebutton_pipelines.php</inclure>
+	</pipeline>
+	<chemin dir='' />
+	<necessite id="SPIP" version="[2.0.8;]" />
+	<necessite id="facteur" version="[1.0;]" />
+        <necessite id="spip_bonux" version="[1.3;]" />
+        <bouton id='bigbluebutton' parent='naviguer'>
+            <titre>BigBlueButton</titre>
+            <icone>img_pack/bigbluebutton-22.png</icone>
+            <url>bigbluebutton</url>
+        </bouton>
+	<categorie>communication</categorie>
+</plugin>

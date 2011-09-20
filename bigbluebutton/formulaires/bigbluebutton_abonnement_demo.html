@@ -1,0 +1,43 @@
+<div class="formulaire_spip formulaire_editer formulaire_#FORM" id="formulaire_#FORM-#ENV{id,new}">
+<ul class="liste_items">
+  <li class="item">
+  [<p class="reponse_formulaire reponse_formulaire_ok">(#ENV*{message_ok})</p>]
+  [(#ENV{editable})
+	[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+	<form action="#ENV{action}" method="post"><div>
+	#ACTION_FORMULAIRE{#ENV{action}}
+	 <fieldset>
+	 <ul>
+          #SET{name,bbb_meeting_room_name}
+          #SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+          #SET{obli,'obligatoire'}
+          <li class="editer_[(#GET{name})][ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+            <label for="#GET{name}"><:bigbluebutton:meeting_room_name:></label>
+            [<span class='erreur_message'>(#GET{erreurs})</span>]
+            <input type="text" class="text" name="#GET{name}" id="#GET{name}" size="50" maxlength="255" value="#ENV{#GET{name}}" />
+          </li>
+          #SET{name,bbb_attendee_email}
+          #SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+          #SET{obli,'obligatoire'}
+          <li class="editer_[(#GET{name})][ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+            <label for="#GET{name}"><:bigbluebutton:attendee_email:></label>
+            [<span class='erreur_message'>(#GET{erreurs})</span>]
+            <input type="text" class="text" name="#GET{name}" id="#GET{name}" size="50" maxlength="255" value="#ENV{#GET{name}}" />
+          </li>
+         </ul>
+          </fieldset>
+        
+          #SET{name,bbb_attendee_ip}
+          #SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+          #SET{obli,''}
+          [<span class='erreur_message'>(#GET{erreurs})</span>]
+          <input type="hidden" class="text" name="#GET{name}" id="#GET{name}" size="50" maxlength="255" value="#ENV{#GET{name}}" />
+
+          #SET{name,bbb_date_consult}
+          <input type="hidden" class="text" name="#GET{name}" id="#GET{name}" size="50" maxlength="255" value="#GET{bbb_date_debut,#BBB_DATE_DEBUT|affdate{Y-m-d}}" />
+
+	  <p class="boutons"><span class="image_loading">&nbsp;</span><input type="submit" class="submit" value="<:bouton_enregistrer:>" /></p>
+	  </div></form>
+  ]
+
+</div>

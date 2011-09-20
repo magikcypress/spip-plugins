@@ -1,0 +1,27 @@
+<plugin>
+	<nom>twitstream</nom>
+	<auteur>
+         cyp &copy; 2010 - Distribu&eacute; sous licence GNU/GPL
+	</auteur>
+	<version>0.1</version>
+        <version_base>0.1</version_base>
+	<etat>stable</etat>
+	<description>
+        <multi>[fr] Twitstream vous permet d'extraire des gazouillis par recherche de hashtag sur vos pages web
+     	Jquery propos&eacute; par http://kjc-designs.com/TwitStream @noah_cooper
+        </multi>
+	</description>
+	<lien>[Documentation->http://www.spip-contrib.net/twitstream]</lien>
+        <prefix>twitstream</prefix>
+	<icon>img_pack/twitstream-64.png</icon>
+	<pipeline>
+            <nom>insert_head_css</nom>
+            <inclure>twitstream_pipelines.php</inclure>
+	</pipeline>
+	<pipeline>
+            <nom>insert_head</nom>
+            <inclure>twitstream_pipelines.php</inclure>
+	</pipeline>
+        <necessite id="SPIP" version="[2.1.0;]" />
+	<categorie>communication</categorie>
+</plugin>

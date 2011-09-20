@@ -1,0 +1,18 @@
+#SET{name,bbb_groups_name}
+#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+#SET{obli,'obligatoire'}
+<fieldset>
+<legend><:bigbluebutton:groups_lists:></legend>
+<ul>
+<B_bbb_groups>
+<BOUCLE_bbb_groups(spip_bbb_groups) {par bbb_id_groups} {inverse}>
+<li class="editer_[(#GET{name})][ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+[<span class='erreur_message'>(#GET{erreurs})</span>]
+<input type="radio" class="text" name="#GET{name}" id="#BBB_ID_GROUPS" value="#BBB_GROUPS_NAME" /> #BBB_GROUPS_NAME
+</li>
+</BOUCLE_bbb_groups>
+</B_bbb_groups>
+    <div class="aucune_date"><:bigbluebutton:groups_aucun:></div>
+<//B_bbb_groups>
+</ul>
+</fieldset>

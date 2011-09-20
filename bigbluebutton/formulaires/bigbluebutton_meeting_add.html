@@ -1,0 +1,73 @@
+<p><:bigbluebutton:ajout_room_aide:></p>
+<div class="formulaire_spip formulaire_editer formulaire_#FORM" id="formulaire_#FORM-#ENV{id,new}">
+  [<p class="reponse_formulaire reponse_formulaire_ok">(#ENV*{message_ok})</p>]
+  [(#ENV{editable})
+	[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+	<form action="#ENV{action}" method="post"><div>
+	#ACTION_FORMULAIRE{#ENV{action}}
+	 <fieldset>
+	 <ul>
+          #SET{name,bbb_meeting_room_name}
+          #SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+          #SET{obli,'obligatoire'}
+          <li class="editer_[(#GET{name})][ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+            <label for="#GET{name}"><:bigbluebutton:attendee_name:></label>
+            [<span class='erreur_message'>(#GET{erreurs})</span>]
+            <input type="text" class="text" name="#GET{name}" id="#GET{name}" size="50" maxlength="255" value="#ENV{#GET{name}}" />
+          </li>
+	  <li class='editer_date fieldset'><fieldset><legend><:bigbluebutton:evenement_date:></legend>
+	    <ul>
+	    <li class="editer_date_debut_fin[ (#ENV**{erreurs}|table_valeur{bbb_date_debut}|oui)erreur][ (#ENV**{erreurs}|table_valeur{bbb_date_fin}|oui)erreur]">
+			[
+			<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{bbb_date_debut})</span>][
+			<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{bbb_date_fin})</span>
+			]<label for="bbb_date_debut"><:bigbluebutton:evenement_date_de:></label><input type='text' class='text date' name='bbb_date_debut' id='bbb_date_debut' value="[(#ENV{bbb_date_debut})]" />
+			<span class='afficher_horaire'>
+			<label for='bbb_heure_debut' class='heure'><:bigbluebutton:evenement_date_a_immediat:></label>
+			<input type='text' class='text heure' name='bbb_heure_debut' id='bbb_heure_debut' value="[(#ENV{bbb_heure_debut})]" />
+                        </span>
+			<label for="bbb_date_fin" class='date_fin'><:bigbluebutton:evenement_date_a:></label>
+                        <input type='text' class='text date' name='bbb_date_fin' id='bbb_date_fin' value="[(#ENV{bbb_date_fin})]" />
+			<span class='afficher_horaire'>
+                        <label for='bbb_heure_fin' class='heure'><:agenda:evenement_date_a_immediat:></label>
+			<input type='text' class='text heure' name='bbb_heure_fin' id='bbb_heure_fin' value="[(#ENV{bbb_heure_fin})]"/>
+                        </span>
+	    </li>
+            </ul>
+          </li>
+          #SET{name,bbb_attendee_email}
+          #SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+          #SET{obli,'obligatoire'}
+          <li class="editer_[(#GET{name})][ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+            <label for="#GET{name}"><:bigbluebutton:attendee_email:></label>
+            [<span class='erreur_message'>(#GET{erreurs})</span>]
+            <input type="text" class="text" name="#GET{name}" id="#GET{name}" size="50" maxlength="255" value="#ENV{#GET{name}}" />
+          </li>
+          #SET{name,bbb_moderator_email}
+          #SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+          #SET{obli,'obligatoire'}
+          <li class="editer_[(#GET{name})][ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+            <label for="#GET{name}"><:bigbluebutton:moderator_email:></label>
+            [<span class='erreur_message'>(#GET{erreurs})</span>]
+            <input type="text" class="text" name="#GET{name}" id="#GET{name}" size="50" maxlength="255" value="#ENV{#GET{name}}" />
+          </li>
+          #SET{name,bbb_envoi_email_confirm}
+          #SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+          #SET{obli,''}
+          <li class="editer_[(#GET{name})][ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+            <label for="#GET{name}"><:bigbluebutton:envoi_email_confirm:></label>
+            [<span class='erreur_message'>(#GET{erreurs})</span>]
+            <input type="checkbox" class="checkbox" name="#GET{name}" id="#GET{name}" value="1" [(#ENV{#GET{name}}|=={1}|oui) checked="checked"] />
+          </li>
+	 </ul>
+	 </fieldset>
+         #SET{name,bbb_attendee_ip}
+         #SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+         #SET{obli,''}
+         [<span class='erreur_message'>(#GET{erreurs})</span>]
+         <input type="hidden" class="text" name="#GET{name}" id="#GET{name}" size="50" maxlength="255" value="#ENV{#GET{name}}" />
+	 <p class="boutons"><span class="image_loading">&nbsp;</span><input type="submit" class="submit" value="<:bouton_enregistrer:>" /></p>
+	 </div></form>
+        #INCLURE{fond=formulaires/inc-bigbluebutton_pickers}
+  ]
+</div>

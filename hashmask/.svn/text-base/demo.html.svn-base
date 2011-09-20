@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>HashMask - Demo</title>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.js"></script>
+		<script type="text/javascript" src="hashmask.sha1.js"></script>
+		<script type="text/javascript" src="hashmask.sparkline.js"></script>
+		<script type="text/javascript" src="hashmask.js"></script>
+
+		<style type="text/css">
+		body {
+			text-align: center;
+			font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
+		}
+	
+		label {
+			display: block;
+			color: #666;
+			font-size: .8em;
+		}
+	
+		#username, #password
+		{
+			font-size: 2em;
+			width: 350px;
+		}
+		</style>
+	</head>
+
+	<body>
+		<h1>Login to HashMask Demo</h1>
+
+		<form id="loginF" action="login" method="post">
+			<p>
+				<label for="username">Username</label>
+				<input type="text" name="username" id="username" value="" size="20" />
+			</p>
+			<p>
+				<label for="password">Password</label>
+				<input type="password" name="password" id="password" value="" size="20" />
+			</p>
+			<p class="submit">
+				<input type="submit" name="submit" id="submit" value="Login" />
+			</p>
+		</form>
+		
+
+		<script type="text/javascript">
+		// <![CDATA[
+		$(function() {
+			$("#password").hashmask();
+		});
+		// ]]>
+		</script>
+	</body>
+</html>

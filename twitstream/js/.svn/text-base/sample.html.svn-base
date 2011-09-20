@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>TwitStream - Sample</title>
+<style type="text/css">
+body{
+	font-family: Verdana;
+	font-size: 12px;	
+}
+</style>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="twitStream.js"></script>
+<script type="text/javascript">
+showTweetLinks='all';
+</script>
+<link rel="stylesheet" href="twit-stream.css" />
+</head>
+<body>
+<p>Five most recent tweets mentioning <a target="_blank" href="http://search.twitter.com/search?q=%23ftw">#ftw</a>:</p>
+<div class="twitStream 5" id="tweets" title="#ftw"></div>
+</body>
+</html>

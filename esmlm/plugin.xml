@@ -1,0 +1,46 @@
+<plugin>
+	<nom>esmlm</nom>
+	<auteur>
+         cyp &copy; 2010 - Distribu&eacute; sous licence GNU/GPL
+	</auteur>
+	<version>0.2</version>
+        <version_base>0.2</version_base>
+	<etat>dev</etat>
+	<description>
+            <multi>
+                [fr]Inscription sur une mailinglist ezmlm ou autres gestionnaire de mailinglist dont l'inscription est basée sur une adresse email.
+            </multi>
+	</description>
+	<lien>[Documentation->http://www.spip-contrib.net/esmlm]</lien>
+        <prefix>esmlm</prefix>
+	<icon>img_pack/esmlm-64.png</icon>
+	<install>base/esmlm.php</install>
+        <pipeline>
+            <nom>declarer_tables_principales</nom>
+            <inclure>base/esmlm.php</inclure>
+        </pipeline>
+	<pipeline>
+	    <nom>declarer_tables_interfaces</nom>
+	    <inclure>base/esmlm.php</inclure>
+	</pipeline>
+	<pipeline>
+            <nom>header_prive</nom>
+            <inclure>esmlm_pipelines.php</inclure>
+	</pipeline>
+        <pipeline>
+            <nom>autoriser</nom>
+            <inclure>esmlm_autoriser.php</inclure>
+        </pipeline>
+	<necessite id="SPIP" version="[2.0.8;]" />
+        <bouton id='esmlm' parent='naviguer'>
+            <titre>esmlm</titre>
+            <icone>img_pack/esmlm-22.png</icone>
+            <url>esmlm</url>
+        </bouton>
+        <bouton id='clevermail2' parent='bando_publication' position='-1'>
+            <icone>img_pack/esmlm-16.png</icone>
+            <titre>esmlm</titre>
+            <url>esmlm</url>
+        </bouton>
+	<categorie>communication</categorie>
+</plugin>

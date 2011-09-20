@@ -1,0 +1,42 @@
+<h1><:bigbluebutton:liste_rooms:></h1>
+
+<B_bbb_meetingrooms>
+      #ANCRE_PAGINATION
+      	#PAGINATION{page}
+<ul class="liste_items">
+<BOUCLE_bbb_meetingrooms(spip_bbb_meetingrooms){par bbb_id} {inverse} {pagination 10}>
+    <h2 style="text-align: right;">#GET{bbb_date_debut,#BBB_DATE_DEBUT|affdate{d-m-Y H:i:s}} <span> - </span> #GET{bbb_date_fin,#BBB_DATE_FIN|affdate{H:i:s}}</h2>
+    <h3 style="text-align: right;"><:bigbluebutton:date_inscription:> : #GET{bbb_date_inscription,#BBB_DATE_INSCRIPTION|affdate{d-m-Y H:i:s}}</h3>
+  <li class="item">
+    <p><strong><:bigbluebutton:meeting_room_name:></strong> #BBB_MEETING_ROOM_NAME (#BBB_ATTENDEE_IP)<br />
+    <strong><:bigbluebutton:attendee_email:></strong> #BBB_ATTENDEE_EMAIL<br />
+    <strong><:bigbluebutton:moderator_email:></strong> #BBB_MODERATOR_EMAIL<br />
+    <strong><:bigbluebutton:attendee_key:></strong> #BBB_CLEF<br />
+    <strong><:bigbluebutton:reponse_serveur:></strong> #BBB_REPONSE_SERVER<br />
+    <strong><:bigbluebutton:confirmation_mail:></strong> [(#BBB_CONFIRMATION|=={0}|?{<:bigbluebutton:inscription_no:>,<:bigbluebutton:inscription_ok:>})]<br />
+    <strong><:bigbluebutton:confirmation_cron:></strong> [(#BBB_TACHE_CONFIRM_CRON|=={0}|?{<:bigbluebutton:envoyer_no:>,<:bigbluebutton:envoyer:>})]
+
+    </p>
+
+    <div class="actions">
+        [(#BBB_CONFIRMATION|=={0}|?{
+            [(#BOUTON_ACTION{<:bigbluebutton:confirmation_valid_mail:>,#URL_ACTION_AUTEUR{bigbluebutton_envoi_validation,#BBB_ID,#SELF},ajax,<:bigbluebutton:confirmation_valid_mail:>})] |
+            [(#BOUTON_ACTION{<:bigbluebutton:confirmation_confirm_mail:>,#URL_ACTION_AUTEUR{bigbluebutton_envoi_confirmation,#BBB_ID,#SELF},ajax,<:bigbluebutton:confirmation_confirm_mail:>})] |  })]
+            [(#BOUTON_ACTION{<:bigbluebutton:supprimer:>,#URL_ACTION_AUTEUR{bigbluebutton_delete,#BBB_ID,#SELF},ajax,<:bigbluebutton:supprimer_confirmer:>})] <br />
+            <a href="[(#BBB_JOIN_URL_ATTENDEE)]" target="_blank"><:bigbluebutton:joindre_webconf_invite:></a> |
+            <a href="[(#BBB_JOIN_URL_MODERATOR)]" target="_blank"><:bigbluebutton:joindre_webconf_moderateur:></a>
+    </div>
+  </li>
+</BOUCLE_bbb_meetingrooms>
+</ul>
+</B_bbb_meetingrooms>
+<div class="cadre cadre-info"><:bigbluebutton:aucun_participant:></div>
+<//B_bbb_meetingrooms>
+
+<!--#navigation-->
+<INCLURE{fond=prive/bigbluebutton_navigation}>
+<!--/#navigation-->
+
+<!--#extra-->
+
+<!--/#extra-->
