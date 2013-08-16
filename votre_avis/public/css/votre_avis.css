@@ -1,0 +1,71 @@
+/* habillage votre_avis
+---------------------------------------------- */
+
+
+.menu .first_votre_avis_positif,
+.menu .first_votre_avis_negatif,
+.menu .first_votre_avis_idee { font-size: 3em; }
+
+.menu .first_votre_avis_positif { color: #acbaaf; }
+.menu .first_votre_avis_negatif { color: #d2c9c7; }
+.menu .first_votre_avis_idee { color: #dbc9a7; }
+
+.meta time { font-size: .8em; float: left; margin-left: .5em;  }
+
+#numfield { color: green; text-align: right; font-weight: bold; font-size: 1.4em; }
+
+.votre_avis p {  margin: 0; margin-left: 45px; }
+.votre_avis li h3.type span { display: none; visibility: hidden; }
+.votre_avis li h3.type { background-image: url('../../prive/themes/spip/images/eloge.png'); width: 24px; height: 25px; margin: .4em; float: left;}
+.votre_avis li h3.positif { background-position: 0px -24px; }
+.votre_avis li h3.negatif { background-position: 0px 0px; }
+.votre_avis li h3.idee { background-position: 0px -50px; }
+.votre_avis div.options span { display: none; visibility: hidden; }
+.votre_avis div.options ul li { text-align: right; }
+.votre_avis div.options a { margin: 0; padding-bottom: .3em; }
+.votre_avis div.options .twitter { background-image: url('../../prive/themes/spip/images/twitter-logo.png'); background-repeat: no-repeat; background-position: 0px 0px; padding-left: 1.5em; margin-left: .1em; }
+.votre_avis li.row_even { background:white; }
+.votre_avis li.row_odd { background:#F0F0F0; }
+
+li.editer input[type='radio'] + label { display: inline; }
+ul.votre_avis_tout li { text-align: right; margin: .5em .6em 0 0; }
+ul.votre_avis_tout li a { background: #EED; text-decoration: none; padding: .3em; }
+ul.votre_avis_tout li a:hover { background-color: #900; color: #FFF; padding: .3em; }
+
+.privacy { padding: .2em; font-size: .9em; color: #900; 
+	-ms-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: #EED;
+    border: 4px solid #EED; 
+}
+
+/*
+li.editer label { display: none; visibility: hidden; }
+li.editer input[type='radio'] {
+    opacity: 0;
+    float: left;
+    width: 10px;
+    height:10px;
+    cursor: pointer;
+}
+
+li.editer input[type='radio'] + label {
+	display: block;
+	visibility: visible;
+	margin: 0;
+	padding: 0;
+    margin-left:-10px;
+    clear: none;
+    padding: 5px 0 4px 18px;
+    background-image: url('../../plugins-dist/votre_avis/prive/themes/spip/images/eloge.png');
+    background-position: 0px -25px; 
+}
+
+
+li.editer input[type='radio']:checked + label {
+    background-image: url('../../plugins-dist/votre_avis/prive/themes/spip/images/eloge.png');
+    background-position: 0px -50px;
+}
+*/

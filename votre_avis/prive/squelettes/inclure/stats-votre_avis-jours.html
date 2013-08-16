@@ -1,0 +1,44 @@
+#SET{c,#VAL{votre_avis}|classement_populaires}
+
+<ul class="votre_avis_tout">
+	<li><span>
+		#SET{args,#ARRAY{id_rubrique,#ID_RUBRIQUE,duree,#DUREE}}
+		<a href="[(#URL_PAGE{transmettre,[(#VAL{votre_avis}|param_low_sec{#GET{args}, '', 'transmettre'})]})]" class="noajax"><:votre_avis:csv:></a></span>
+	</li>
+</ul>
+#SET{max,0}
+#SET{moy,0}
+#SET{last,0}
+#SET{lastlast,0}
+<B_statsj>
+
+	<table class='votre_avis' id='votre_avis_quotidiennes'>
+	<caption><:votre_avis:votre_avis_journaliers:></caption>
+	  <thead>
+			<tr class='row_first'>
+				<th><:date|trim{':'}|trim:></th>
+				<th class='positif'><:votre_avis:votre_avis_positif_choix|trim{':'}|trim:></th>
+				<th class='negatif'><:votre_avis:votre_avis_negatif_choix|trim{':'}|trim:></th>
+				<th class='tous'><:votre_avis:votre_avis_tous|trim{':'}|trim:></th>				
+				<th class='idee'><:votre_avis:votre_avis_idee_choix|trim{':'}|trim:></th>
+			</tr>
+	  </thead>
+
+	  <tbody>
+		<BOUCLE_statsj(DATA){source stats_votre_avis,jour,#ENV{duree,90},#ENV{id_rubrique},#ENV{choix}}>
+			<tr class="c_[(#CLE|affdate{l}|substr{0,3})][(#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|oui)c_today]">
+				<th title="[(#CLE|affdate{'Y/m/d'})]">[(#COMPTEUR_BOUCLE|=={#TOTAL_BOUCLE}|?{<:info_aujourdhui:>,#CLE|affdate_jourcourt})]</th>
+				<td class="posit">#VALEUR{positif}</td>
+				<td class="negat">#VALEUR{negatif}</td>				
+				<td class="idee">#VALEUR{idee}</td>
+				<td class="tous">#VALEUR{votre_avis}</td>				
+			</tr>
+			#SET{max,#GET{max}|max{#VALEUR{positif}}}
+			#SET{moy,#VALEUR{moyenne}}
+			#SET{lastlast,#GET{last}}
+			#SET{last,#VALEUR{positif}}
+		</BOUCLE_statsj>
+		</tbody>
+	</table>
+
+</B_statsj>

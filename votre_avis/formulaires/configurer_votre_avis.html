@@ -1,0 +1,55 @@
+<div class="formulaire_spip formulaire_configurer formulaire_#FORM formulaire_#FORM-#ENV{id,nouveau}">
+<h3 class='titrem'><img src="#CHEMIN_IMAGE{breve-24.png}" class="cadre-icone" /><:votre_avis:titre_votre_avis:>#AIDER{confvotre_avis}</h3>
+	[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV*{message_ok})</p>]
+	[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+	[(#ENV{editable})
+	<p><:votre_avis:texte_votre_avis:></p>
+	<form method='post' action='#ENV{action}'><div>
+		[(#REM) declarer les hidden qui declencheront le service du formulaire
+		parametre : url d'action ]
+		#ACTION_FORMULAIRE{#ENV{action}}
+		<ul>
+			#SET{name,activer_votre_avis}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+			<li class="editer long_label editer_[(#GET{name})][ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+				<label for="#GET{name}"><:votre_avis:info_votre_avis:></label>[
+				<span class='erreur_message'>(#GET{erreurs})</span>
+				]<div class="choix">
+						<input type="radio" name="#GET{name}" id="#GET{name}_oui" value="oui"
+						onchange="if ($(this).prop('checked')) $('li.editer_activer_votre_avis').siblings('li').show('fast');"
+						[(#ENV{#GET{name}}|=={oui}|oui)checked="checked"] /><label for="#GET{name}_oui"><:votre_avis:item_utiliser_votre_avis:></label>
+					</div>
+					<div class="choix">
+						<input type="radio" name="#GET{name}" id="#GET{name}_non" value="non"
+						onchange="if ($(this).prop('checked')) $('li.editer_activer_votre_avis').siblings('li').hide('fast');"
+						[(#ENV{#GET{name}}|=={oui}|non)checked="checked"] /><label for="#GET{name}_non"><:votre_avis:item_non_utiliser_votre_avis:></label>
+					</div>
+			</li>
+
+			#SET{name,config_rubrique_votre_avis}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+			<li class="editer editer_[(#GET{name})][ (#GET{obli})][ (#GET{erreurs}|oui)erreur]"[(#ENV{activer_votre_avis}|=={oui}|non)style="display:none;"]>
+				<label><:votre_avis:item_config_label_numero_votre_avis:></label>[
+				<span class='erreur_message'>(#GET{erreurs})</span>
+				]<p class="explication"><:votre_avis:item_config_numero_explication_votre_avis:></p>
+				<div class="choix">
+					<input type="text" name="#GET{name}" id="#GET{name}_oui" value="#ENV{#GET{name}}"
+					 /><label for="#GET{name}_idrub"><:votre_avis:item_config_numero_votre_avis:></label>
+				</div>
+			</li>
+			#SET{name,config_nbcaracteres_votre_avis}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+			<li class="editer editer_[(#GET{name})][ (#GET{obli})][ (#GET{erreurs}|oui)erreur]"[(#ENV{activer_votre_avis}|=={oui}|non)style="display:none;"]>
+				<label><:votre_avis:item_config_label_nbcaractere_votre_avis:></label>[
+				<span class='erreur_message'>(#GET{erreurs})</span>
+				]<p class="explication"><:votre_avis:item_config_nbcaractere_explication_votre_avis:></p>
+				<div class="choix">
+					<input type="text" name="#GET{name}" id="#GET{name}_non" value="#ENV{#GET{name}}"
+					 /><label for="#GET{name}_non"><:votre_avis:item_config_nbcaractere_votre_avis:></label>
+				</div>
+			</li>
+
+		</ul>
+	  [(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
+	  <!--extra-->
+	  <p class='boutons'><span class='image_loading'>&nbsp;</span><input type='submit' class='submit' value='<:bouton_enregistrer:>' /></p>
+	</div></form>
+	]
+</div>

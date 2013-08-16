@@ -1,0 +1,27 @@
+<BOUCLE_votre_avis(VOTRE_AVIS){id_votre_avis=#ENV{id}}{statut==.*}{!lang_select}>
+<div class='infos'>
+<div class='numero'><:votre_avis:info_gauche_numero_votre_avis:><p>#ID_VOTRE_AVIS</p></div>
+
+#FORMULAIRE_INSTITUER_OBJET{votre_avis,#ID_VOTRE_AVIS}
+
+[(#REM)
+
+	Bouton voir en ligne
+
+]
+<BOUCLE_publiee(VOTRE_AVIS){id_votre_avis}>
+	[(#VAL{redirect}
+		|generer_url_action{type=votre_avis&id=#ID_VOTRE_AVIS}
+		|parametre_url{var_mode,calcul}
+		|icone_horizontale{<:icone_voir_en_ligne:>,racine})]
+</BOUCLE_publiee>
+	[(#AUTORISER{previsualiser,votre_avis,#ID_VOTRE_AVIS,'',#ARRAY{statut,#STATUT}})
+		[(#VAL{redirect}
+			|generer_url_action{type=votre_avis&id=#ID_VOTRE_AVIS}
+			|parametre_url{var_mode,preview}
+			|icone_horizontale{<:previsualiser:>,preview})]
+	]
+<//B_publiee>
+
+</div>
+</BOUCLE_votre_avis>
