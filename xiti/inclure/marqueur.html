@@ -16,28 +16,28 @@
 
 [(#REM) Si xtpage est a oui la hierarchie de la page pour permettre de créer un chapitre rubrique::article, 
 		à l'inverse la variable corresponds au titre des pages]
-[(#CONFIG{xtpage_xiti}|=={oui}|oui) [(#SET{titre,#GET{titre_chapitre}})]]
+[(#CONFIG{xiti/xtpage_xiti}|=={oui}|oui) [(#SET{titre,#GET{titre_chapitre}})]]
 
 [(#REM) Si la page n'a pas de titre on affiche l'url de la page ???]
 [(#GET{titre}|=={''}|oui) [(#SET{titre,[(#URL_PAGE|xiti_nettoyeur)]})]]
 
 [(#REM) On verifie si Xiti est activé et on affiche le marqueur]
-[(#CONFIG{activer_xiti}|oui)
+[(#CONFIG{xiti/activer_xiti}|oui)
 	<div id="xiti-tag">
 		<script type="text/javascript">
 			<!--
-			xtnv = #CONFIG{xtnv_xiti};        //parent.document or top.document or document         
-			xtsd = "http://logd#CONFIG{xtsd_xiti}"; 		// Sous domaine Xiti ex: http://logp4
-			xtsite = "#CONFIG{xtsite_xiti}";  // ID client
-			xtn2 = "#CONFIG{xtn2_xiti}";        // level 2 site 
+			xtnv = #CONFIG{xiti/xtnv_xiti};        //parent.document or top.document or document         
+			xtsd = "http://logd#CONFIG{xiti/xtsd_xiti}"; 		// Sous domaine Xiti ex: http://logp4
+			xtsite = "#CONFIG{xiti/xtsite_xiti}";  // ID client
+			xtn2 = "#CONFIG{xiti/xtn2_xiti}";        // level 2 site 
 			xtpage = "#GET{titre}";        //page name (with the use of :: to create chapters)
-			xtdi = "#CONFIG{xtdi_xiti}";        //implication degree
+			xtdi = "#CONFIG{xiti/xtdi_xiti}";        //implication degree
 			//-->
 		</script>
 		<script type='text/javascript' src='[(#CHEMIN{javascript/xtcore.js})]'></script>
 		<noscript>
 			<div id='xiti-tag-noscript'>
-				<img width='1' height='1' src='http://logd#CONFIG{xtsd_xiti}.xiti.com/hit.xiti?s=#CONFIG{xtsite_xiti}&amp;s2=#CONFIG{xtn2_xiti}&amp;p=#GET{titre}&amp;di=&amp;' alt='XiTi' />
+				<img width='1' height='1' src='http://logd#CONFIG{xiti/xtsd_xiti}.xiti.com/hit.xiti?s=#CONFIG{xiti/xtsite_xiti}&amp;s2=#CONFIG{xiti/xtn2_xiti}&amp;p=#GET{titre}&amp;di=&amp;' alt='XiTi' />
 			</div>
 		</noscript>
 	</div>]
