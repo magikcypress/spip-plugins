@@ -32,8 +32,10 @@
 			xtn2 = "#CONFIG{xiti/xtn2_xiti}";        // level 2 site 
 			xtpage = "#GET{titre}";        //page name (with the use of :: to create chapters)
 			xtdi = "#CONFIG{xiti/xtdi_xiti}";        //implication degree
+			xtdmc = ".[(#URL_SITE_SPIP|replace{http:\/\/,})]";
 			//-->
 		</script>
+		<script type='text/javascript' src='[(#CHEMIN{javascript/xtclicks.js})]'></script>
 		<script type='text/javascript' src='[(#CHEMIN{javascript/xtcore.js})]'></script>
 		<noscript>
 			<div id='xiti-tag-noscript'>
