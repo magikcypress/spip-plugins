@@ -1,0 +1,26 @@
+<paquet
+	prefix="monitor"
+	categorie="statistique"
+	version="1.0.0"
+	etat="stable"
+	compatibilite="[3.0.0;3.1.*]"
+	logo="prive/themes/spip/images/monitor-32.png"
+	documentation=""
+	schema="1.0"
+>
+
+	<nom>monitor</nom>
+	<!--Ce plugin permet de monitorer des serveurs web-->
+
+	<auteur>Vincent</auteur>
+
+	<licence>GNU/GPL</licence>
+
+	<pipeline nom="configurer_liste_metas" inclure="monitor_pipelines.php" />
+	<pipeline nom="declarer_tables_interfaces" inclure="base/monitor.php" />
+	<pipeline nom="declarer_tables_objets_sql" inclure="base/monitor.php" />
+	<pipeline nom="affiche_milieu" inclure="monitor_pipelines.php" />
+
+	<menu nom="monitor" titre="monitor:icone_monitor" parent="menu_configuration" icone="images/monitor-16.png" action="configurer_monitor" />
+	
+</paquet>
