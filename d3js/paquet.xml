@@ -17,6 +17,7 @@
 
 	<licence>GNU/GPL</licence>
 	<pipeline nom="autoriser" inclure="d3js_autorisations.php" /> 
-    <pipeline nom="insert_head" inclure="d3js_pipelines.php" /> 
+	<pipeline nom="insert_head"      action="insert_head_public"    inclure="d3js_pipelines.php" />
+	<pipeline nom="header_prive"     action="insert_head_prive"     inclure="d3js_pipelines.php" />
 
 </paquet>
