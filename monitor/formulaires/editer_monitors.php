@@ -54,8 +54,8 @@ function formulaires_editer_monitors_traiter_dist(){
 	$sites = sql_allfetsel('id_syndic', 'spip_syndic', 'statut="publie"');
 
 	foreach ($sites as $site) {
-		sql_insertq('spip_monitor',array('id_syndic'=>$site['id_syndic'], 'status'=>_request('activer_monitors_ping'), 'type'=>_request('activer_monitors_ping_type')));
-		sql_insertq('spip_monitor',array('id_syndic'=>$site['id_syndic'], 'status'=>_request('activer_monitors_poids'), 'type'=>_request('activer_monitors_poids_type')));
+		sql_insertq('spip_monitor',array('id_syndic'=>$site['id_syndic'], 'statut'=>_request('activer_monitors_ping'), 'type'=>_request('activer_monitors_ping_type')));
+		sql_insertq('spip_monitor',array('id_syndic'=>$site['id_syndic'], 'statut'=>_request('activer_monitors_poids'), 'type'=>_request('activer_monitors_poids_type')));
 	}
 		
 	return array('message_ok'=>_T('config_info_enregistree'));

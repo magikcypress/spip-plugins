@@ -27,7 +27,7 @@ function formulaires_editer_monitor_charger_dist(){
 
 	$valeurs = array();
 	$id_syndic = _request('id_syndic');
-	$valeurs['status'] = sql_allfetsel('id_syndic,type,status', 'spip_monitor', 'id_syndic=' . $id_syndic);
+	$valeurs['status'] = sql_allfetsel('id_syndic,type,statut', 'spip_monitor', 'id_syndic=' . $id_syndic);
 	
 	return $valeurs;
 	
@@ -62,14 +62,14 @@ function formulaires_editer_monitor_traiter_dist(){
 	$syndic = sql_allfetsel('id_syndic', 'spip_monitor', 'id_syndic=' . $id_syndic);
 
 	if (!$syndic) {
-		sql_insertq('spip_monitor',array('id_syndic'=>$id_syndic, 'status'=>_request('activer_monitor_ping') ,'type'=>_request('activer_monitor_ping_type')));
-		sql_insertq('spip_monitor',array('id_syndic'=>$id_syndic, 'status'=>_request('activer_monitor_poids') ,'type'=>_request('activer_monitor_poids_type')));
+		sql_insertq('spip_monitor',array('id_syndic'=>$id_syndic, 'statut'=>_request('activer_monitor_ping') ,'type'=>_request('activer_monitor_ping_type')));
+		sql_insertq('spip_monitor',array('id_syndic'=>$id_syndic, 'statut'=>_request('activer_monitor_poids') ,'type'=>_request('activer_monitor_poids_type')));
 	} else {
 		spip_log(_request('activer_monitor_ping'), 'test.' . _LOG_ERREUR);
 		spip_log(_request('activer_monitor_ping_type'), 'test.' . _LOG_ERREUR);
 		spip_log(_request('id_syndic'), 'test.' . _LOG_ERREUR);
-		sql_updateq('spip_monitor', array('status'=>_request('activer_monitor_ping')), 'id_syndic=' . $id_syndic . 'and type like "' . _request('activer_monitor_ping_type') . '"');
-		sql_updateq('spip_monitor', array('status'=>_request('activer_monitor_poids')), 'id_syndic=' . $id_syndic . 'and type like "' . _request('activer_monitor_poids_type') . '"');
+		sql_updateq('spip_monitor', array('statut'=>_request('activer_monitor_ping')), 'id_syndic=' . $id_syndic . 'and type like "' . _request('activer_monitor_ping_type') . '"');
+		sql_updateq('spip_monitor', array('statut'=>_request('activer_monitor_poids')), 'id_syndic=' . $id_syndic . 'and type like "' . _request('activer_monitor_poids_type') . '"');
 	}
 		
 	return array('message_ok'=>_T('config_info_enregistree'));

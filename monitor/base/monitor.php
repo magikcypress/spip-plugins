@@ -37,8 +37,7 @@ function monitor_declarer_tables_objets_sql($tables){
 			"id_monitor" => "bigint(21) unsigned NOT NULL AUTO_INCREMENT",
 			"id_syndic" => "bigint(21) NOT NULL",
 			"type"	=> "varchar(255) NOT NULL",
-			"status" => "enum('oui','non') NOT NULL default 'oui'",
-			"error" => "varchar(255) NOT NULL",
+			"statut" => "enum('oui','non') NOT NULL default 'oui'",
 			"date_modif" => "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",
 			"maj"	=> "TIMESTAMP"
 		),
@@ -52,7 +51,9 @@ function monitor_declarer_tables_objets_sql($tables){
 		'field'=> array(
 			"id_monitor_log" => "bigint(21) unsigned NOT NULL AUTO_INCREMENT",
 			"id_syndic" => "bigint(21) NOT NULL",
-			"status"	=> "enum('ping','poids') NOT NULL default 'ping'",
+			"statut"	=> "enum('ping','poids') NOT NULL default 'ping'",
+			"log" => "varchar(255) NOT NULL",
+			"latency" => "float(9,7) NOT NULL",
 			"maj"	=> "TIMESTAMP"
 		),
 		'key' => array(

@@ -19,6 +19,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 
 	// I
+	'icone_monitor' => 'Configurer Monitor',
 	'item_utiliser_monitor' => 'Activer Monitor',
 	'item_utiliser_monitor_ping' => 'Activer ping',
 	'item_utiliser_monitor_poids' => 'Activer poids page',
@@ -29,7 +30,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// T
 	'texte_monitor' => '<p>Activer Monitor, puis renseigner le formulaire de configuration du plugin</p>',
 	'texte_monitor_site' => '<p>Activer le monitoring pour ce site</p>',
-	'texte_monitor_sites' => '<p>Activer le monitoring pour les sites</p>',
+	'texte_monitor_sites' => '<p>Activer le monitoring pour tout les sites</p>',
 	'texte_monitor_poids' => '<p>Activer le monitoring (poids page) pour ce site</p>',
 	'titre_configurer' => 'Configurer Monitor',
 	'titre_monitor' => 'Configuration du plugin Monitor',
