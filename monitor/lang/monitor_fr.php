@@ -19,7 +19,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 
 	// I
-	'icone_monitor' => 'Configurer Monitor',
+	'icone_monitor_configuration' => 'Configurer Monitor',
+	'icone_monitor_editer' => 'Editer site Monitor',
 	'item_utiliser_monitor' => 'Activer Monitor',
 	'item_utiliser_monitor_ping' => 'Activer ping',
 	'item_utiliser_monitor_poids' => 'Activer poids page',

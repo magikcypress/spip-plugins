@@ -1,0 +1,34 @@
+<B_liste_monitor>
+#ANCRE_PAGINATION
+<div class="liste-objets sites syndic">
+<table class='spip liste'>
+[<caption><strong class="caption">(#ENV*{titre,#GRAND_TOTAL|singulier_ou_pluriel{info_1_site,info_nb_sites}})</strong></caption>]
+    <thead>
+        <tr class='first_row'>
+            <th class='statut' scope='col'>[(#TRI{statut,<span title="<:lien_trier_statut|attribut_html:>">#</span>,ajax})]</th>
+            <th class='nom_site' scope='col'>[(#TRI{nom_site,<:sites:form_prop_nom_site:>,ajax})]</th>
+            <th class='date_ping' scope='col'><:monitor:date_ping:></th>
+            <th class='id' scope='col'>[(#TRI{id_syndic,<:info_numero_abbreviation:>,ajax})]</th>
+        </tr>
+    </thead>
+    <tbody>
+    <BOUCLE_liste_monitor(MONITOR){type=ping}{par maj}{tri #GET{defaut_tri}}{pagination #ENV{nb,10}}>
+    <BOUCLE_site_monitor(SYNDIC){id_syndic}>
+        <tr class="[(#COMPTEUR_BOUCLE|alterner{row_odd,row_even})]">
+            <td class='statut'>[(#STATUT|puce_statut{site,#ID_SYNDIC}) ]</td>
+            <td class='url_site principale'>                
+                <a href="[(#ID_SYNDIC|generer_url_entite{site})]"
+                    title="<:info_numero_abbreviation|attribut_html:> #ID_SYNDIC">#NOM_SITE</a> [<span class='visiter'>&#91;<a href='(#URL_SITE)'><:lien_visite_site:></a>&#93;</span>]</td>
+            <td class='date_ping secondaire'>[(#DATE_PING|affdate_jourcourt)]</td>
+            <td class='id'>
+                <a href="[(#URL_ECRIRE{site_edit,id_syndic=#ID_SYNDIC})]">#ID_SYNDIC</a></td>
+        </tr>
+    </BOUCLE_site_monitor>
+    </BOUCLE_liste_monitor>
+    </tbody>
+</table>
+[<p class='pagination'>(#PAGINATION{prive})</p>]
+</div>
+</B_liste_monitor>[
+<div class="liste-objets sites caption-wrap"><strong class="caption">(#ENV*{sinon,''})</strong></div>
+]<//B_liste_monitor>
