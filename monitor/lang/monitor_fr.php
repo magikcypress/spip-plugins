@@ -17,10 +17,13 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'legend_activer_monitor' => 'Choix d\'activer monitor',
 	'legend_explication_activer_monitor' => ' ',
 
+	// F
+	'form_url_site' => 'Nom du site',
+	'form_date_ping' => 'Date ping',
 
 	// I
 	'icone_monitor_configuration' => 'Configurer Monitor',
-	'icone_monitor_editer' => 'Editer site Monitor',
+	'icone_monitor_editer' => 'Lister site Monitor',
 	'item_utiliser_monitor' => 'Activer Monitor',
 	'item_utiliser_monitor_ping' => 'Activer ping',
 	'item_utiliser_monitor_poids' => 'Activer poids page',
@@ -39,5 +42,5 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'titre_monitor_sites' => 'Activer Monitor pour les sites',
 	'titre_monitor_ping' => 'Activer le monitoring (ping) pour ce site',
 	'titre_monitor_poids' => 'Activer le monitoring (poids page) pour ce site',
-
+	'titre_page_monitor_ping' => 'Liste des sites sous monitor (ping)',
 );
