@@ -19,19 +19,11 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
  * @param string $version_cible
  */
 function monitor_upgrade($nom_meta_base_version,$version_cible){
-
-	if (!isset($GLOBALS['meta'][$nom_meta_base_version])){
-		$trouver_table = charger_fonction('trouver_table','base');
-		if ($desc = $trouver_table('spip_monitor')
-		  AND isset($desc['exist'])){
-			ecrire_meta($nom_meta_base_version,'1.0.0');
-		}
-		// si pas de table en base, on fera une simple creation de base
-	}
 	
 	$maj = array();
+
 	$maj['create'] = array(
-		array('maj_tables',array('spip_monitor')),
+		array('maj_tables',array('spip_monitor', 'spip_monitor_log', 'spip_syndic'))
 	);
 
 	include_spip('base/upgrade');
@@ -47,6 +39,7 @@ function monitor_vider_tables($nom_meta_base_version) {
 
 	sql_drop_table("spip_monitor");
 	sql_drop_table("spip_monitor_log");
+	sql_alter('TABLE spip_syndic DROP COLUMN date_ping');
 	effacer_meta("monitor");
 	effacer_meta($nom_meta_base_version);
 }
