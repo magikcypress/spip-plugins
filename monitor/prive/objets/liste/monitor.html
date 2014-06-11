@@ -15,15 +15,10 @@
     <BOUCLE_liste_monitor(MONITOR){type=#ENV{type}}{statut=oui}{tri #GET{defaut_tri}}{pagination #ENV{nb,10}}>
     <BOUCLE_site_monitor(SYNDIC){id_syndic}>
         <tr class="[(#COMPTEUR_BOUCLE|alterner{row_odd,row_even})]">
-<<<<<<< HEAD
             <td class='statut'>[(#STATUT_LOG|puce_statut{monitor,#ID_SYNDIC})]</td>
-=======
-            <td class='statut'>[(#STATUT|puce_statut{site,#ID_SYNDIC}) ]</td>
->>>>>>> b099133d00e0368fc54267825ffba203bab5b94f
             <td class='url_site principale'>                
                 <a href="[(#ID_SYNDIC|generer_url_entite{site})]"
                     title="<:info_numero_abbreviation|attribut_html:> #ID_SYNDIC">#NOM_SITE</a> [<span class='visiter'>&#91;<a href='(#URL_SITE)'><:lien_visite_site:></a>&#93;</span>]</td>
-
             <td class='date_ping secondaire'>[(#DATE_PING|affdate_jourcourt)]</td>
             <td class='id'>
                 <a href="[(#URL_ECRIRE{site_edit,id_syndic=#ID_SYNDIC})]">#ID_SYNDIC</a></td>
