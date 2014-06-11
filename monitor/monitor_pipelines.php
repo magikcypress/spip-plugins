@@ -21,21 +21,17 @@ function monitor_affiche_milieu($flux){
 
 	// si on est sur un site ou il faut activer le monitor...
 	if (lire_config('monitor/activer_monitor') == "oui" and trouver_objet_exec($flux['args']['exec'] == "site")){
-
+		$id_syndic = _request('id_syndic');
 		$texte = recuperer_fond(
 				'prive/objets/editer/monitor',
 				array(
-					'table_source'=>'monitor',
-					'objet'=>$type,
-					'id_objet'=>$id,
+					'id_syndic'=>$id_syndic
 				)
 		);
 		$texte .= recuperer_fond(
 				'prive/objets/contenu/monitor_graph',
 				array(
-					'table_source'=>'monitor_log',
-					'objet'=>$type,
-					'id_objet'=>$id,
+					'id_syndic'=>$id_syndic,
 				)
 		);
 		if ($p=strpos($flux['data'],"<!--affiche_milieu-->"))
@@ -48,12 +44,7 @@ function monitor_affiche_milieu($flux){
 	if (lire_config('monitor/activer_monitor') == "oui" and trouver_objet_exec($flux['args']['exec'] == "sites")){
 
 		$texte = recuperer_fond(
-				'prive/objets/editer/monitors',
-				array(
-					'table_source'=>'monitor',
-					'objet'=>$type,
-					'id_objet'=>$id,
-				)
+				'prive/objets/editer/monitors'
 		);
 		if ($p=strpos($flux['data'],"<!--affiche_milieu-->"))
 			$flux['data'] = substr_replace($flux['data'],$texte,$p,0);

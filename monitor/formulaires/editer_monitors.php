@@ -26,7 +26,11 @@ if (!defined('_ECRIRE_INC_VERSION')) return;
 function formulaires_editer_monitors_charger_dist(){
 
 	$valeurs = array();
-	
+	$types = array('ping', 'poids');
+	foreach ($types as $key) {
+		$valeurs['compteur_' . $key] = sql_countsel('spip_monitor', 'type=' . sql_quote($key) . ' and statut="oui"');
+	}
+
 	return $valeurs;
 	
 }
@@ -51,11 +55,15 @@ function formulaires_editer_monitors_verifier_dist(){
 **/
 function formulaires_editer_monitors_traiter_dist(){
 
-	$sites = sql_allfetsel('id_syndic', 'spip_syndic', 'statut="publie"');
+	$syndic = sql_allfetsel('id_syndic', 'spip_monitor', 'id_syndic=' . $id_syndic);
 
-	foreach ($sites as $site) {
-		sql_insertq('spip_monitor',array('id_syndic'=>$site['id_syndic'], 'statut'=>_request('activer_monitors_ping'), 'type'=>_request('activer_monitors_ping_type')));
-		sql_insertq('spip_monitor',array('id_syndic'=>$site['id_syndic'], 'statut'=>_request('activer_monitors_poids'), 'type'=>_request('activer_monitors_poids_type')));
+	foreach (array('ping', 'poids') as $key) {
+		$type = sql_getfetsel('id_syndic', 'spip_monitor', 'id_syndic=' . intval($id_syndic) . ' and type=' . sql_quote($key));
+		if(!$type) {
+			sql_insertq('spip_monitor', array('id_syndic'=>$id_syndic, 'statut'=>_request('activer_monitor_'. $key) ,'type'=>$key, 'date_modif' => date('Y-m-d H:i:s')));
+		} else {
+			sql_updateq('spip_monitor', array('statut'=>_request('activer_monitor_' . $key)), 'id_syndic=' . intval($id_syndic) . ' and type=' . sql_quote($key));
+		}
 	}
 		
 	return array('message_ok'=>_T('config_info_enregistree'));

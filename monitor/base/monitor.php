@@ -26,8 +26,9 @@ function monitor_declarer_tables_interfaces($interfaces) {
 }
 
 function monitor_declarer_tables_objets_sql($tables){
-	// On ajoute un champ date_ping dans spip_syndic
-	$tables['spip_syndic']['field']['date_ping'] = "datetime not null";
+	// On ajoute un champ date_ping et statut_log dans spip_syndic
+	$tables['spip_syndic']['field']['date_ping'] = "datetime NOT NULL";
+	$tables['spip_syndic']['field']['statut_log'] = "int(11) NOT NULL";
 
 	$tables['spip_monitor'] = array(
 		'texte_retour' => 'icone_retour',
@@ -46,6 +47,7 @@ function monitor_declarer_tables_objets_sql($tables){
 		),
 		'key' => array(
 			"PRIMARY KEY"	=> "id_monitor",
+			"UNIQUE KEY"	=> "id_syndic,type",
 		)
 	);
 
