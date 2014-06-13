@@ -27,10 +27,13 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// F
 	'form_url_site' => 'Nom du site',
 	'form_date_ping' => 'Date ping',
+	'form_latence' => 'Latence',
 
 	// I
 	'icone_monitor_configuration' => 'Configurer Monitor',
-	'icone_monitor_editer' => 'Lister site Monitor',
+	'icone_monitor_editer' => 'Lister sites Monitorés',
+	'info_site_ping' => 'Le site ping bien.',
+	'info_site_noping' => 'Le site ne ping plus.',
 	'item_utiliser_monitor' => 'Activer Monitor',
 	'item_utiliser_monitor_ping' => 'Activer ping',
 	'item_utiliser_monitor_poids' => 'Activer poids page',
