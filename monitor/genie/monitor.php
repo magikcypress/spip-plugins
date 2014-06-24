@@ -15,10 +15,10 @@ function genie_monitor_dist($t) {
         foreach ($sites as $site) {
             $result = updateWebsite($site['url_site'], 1);
             // Insert les data dans monitor_log
-            $insert_ping = sql_insertq('spip_monitor_log', array('id_syndic' => $site['id_syndic'], 'log' => ($result['result'] ? 1 : 0), 'latency' => $result['latency']));
+            $insert_ping = sql_insertq('spip_monitor_log', array('id_syndic' => $site['id_syndic'], 'log' => ($result['result'] ? "oui" : "non"), 'latency' => $result['latency']));
             if(is_numeric($insert_ping) && $insert_ping > 0) {
                 // Updater champs date_ping dans spip_syndic
-                sql_updateq('spip_syndic', array('date_ping' => date('Y-m-d H:i:s'), 'statut_log' => ($result['result'] ? 1 : 0)), 'id_syndic=' . intval($site['id_syndic']));
+                sql_updateq('spip_syndic', array('date_ping' => date('Y-m-d H:i:s'), 'statut_log' => ($result['result'] ? "oui" : "non")), 'id_syndic=' . intval($site['id_syndic']));
             }
         }
         return 0;

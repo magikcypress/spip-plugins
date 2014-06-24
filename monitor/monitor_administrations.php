@@ -23,12 +23,12 @@ function monitor_upgrade($nom_meta_base_version,$version_cible){
 	$maj = array();
 
 	$maj['create'] = array(
-		array('maj_tables',array('spip_monitor', 'spip_monitor_log', 'spip_syndic'))
+		array('maj_tables', array('spip_monitor', 'spip_monitor_log', 'spip_syndic'))
 	);
 
 	$maj['1.1'] = array(	
 		// Ajout de champs dans spip_syndic
-	 	array('maj_tables',array('spip_syndic'))
+	 	array('maj_tables', array('spip_syndic'))
 	);
 
 	include_spip('base/upgrade');

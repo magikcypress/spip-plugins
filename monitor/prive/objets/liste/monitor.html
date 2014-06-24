@@ -8,6 +8,7 @@
             <th class='statut' scope='col'>[(#TRI{statut,<span title="<:lien_trier_statut|attribut_html:>">#</span>,ajax})]</th>
             <th class='url_site' scope='col'><:monitor:form_url_site:></th>
             <th class='date_ping' scope='col'><:monitor:form_date_ping:></th>
+            <th class='latence' scope='col'><:monitor:form_latence:></th>
             <th class='id' scope='col'>[(#TRI{id_syndic,<:info_numero_abbreviation:>,ajax})]</th>
         </tr>
     </thead>
@@ -20,6 +21,9 @@
                 <a href="[(#ID_SYNDIC|generer_url_entite{site})]"
                     title="<:info_numero_abbreviation|attribut_html:> #ID_SYNDIC">#NOM_SITE</a> [<span class='visiter'>&#91;<a href='(#URL_SITE)'><:lien_visite_site:></a>&#93;</span>]</td>
             <td class='date_ping secondaire'>[(#DATE_PING|affdate_jourcourt)]</td>
+            <BOUCLE_latence_monitor(MONITOR_LOG){id_syndic}{par maj}{0,1}>
+                <td class='latence'>[(#LATENCY)]</td>
+            </BOUCLE_latence_monitor>
             <td class='id'>
                 <a href="[(#URL_ECRIRE{site_edit,id_syndic=#ID_SYNDIC})]">#ID_SYNDIC</a></td>
         </tr>
