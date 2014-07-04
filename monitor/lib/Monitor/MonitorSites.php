@@ -8,7 +8,7 @@
  * @licence    GNU/GPL3
  */
 
-function curl_get($href, $header = false, $body = true, $timeout = 10, $add_agent = true) {
+function curl_get($href, $header = false, $body = true, $timeout = 10, $add_agent = true, $status = false) {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_HEADER, $header);
         curl_setopt($ch, CURLOPT_NOBODY, (!$body));
@@ -23,12 +23,18 @@ function curl_get($href, $header = false, $body = true, $timeout = 10, $add_agen
         }
 
         $result = curl_exec($ch);
+
+        // if size page
+        if($status) {
+                $result = curl_getinfo($ch, $status);
+        }
+
         curl_close($ch);
 
         return $result;
 }
 
-function updateWebsite($href, $max_runs, $run = 1) {
+function updateWebsite($href) {
 
         $starttime = microtime(true);
  
@@ -60,31 +66,39 @@ function updateWebsite($href, $max_runs, $run = 1) {
                 }
         }
 
-        // check if server is available and rerun if asked.
-        if(!$result && $run < $max_runs) {
-                return updateWebsite($max_runs, $run + 1);
-        }
-
         return array('result' => $result, 'latency' => $latency);
 }
 
-function updateService($href, $max_runs, $run = 1) {
+function updateService($href) {
         $errno = 0;
         $error = 1;
         // save response time
         $starttime = microtime(true);
 
-        $fp = fsockopen ($href, '80', $errno, $error, 10);
+        $fp = fsockopen($href, '80', $errno, $error, 10);
 
         $status = ($fp === false) ? false : true;
         $rtime = (microtime(true) - $starttime);
 
         fclose($fp);
 
-        // check if server is available and rerun if asked.
-        if(!$status && $run < $max_runs) {
-                return updateService($max_runs, $run + 1);
-        }
-
         return $status;
+}
+
+function sizePage($href) {
+
+        $poids = curl_get($href, true, true, 10, false, CURLINFO_SIZE_DOWNLOAD);
+
+        if(!$poids)
+                $result = false;
+        else
+                $result = true;
+
+        return array('result' => $result, 'poids' => $poids);
+}
+
+function getPage($href) {
+        $homepage = file_get_contents($href);
+
+        return $homepage;
 }

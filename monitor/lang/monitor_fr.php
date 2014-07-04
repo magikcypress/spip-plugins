@@ -27,7 +27,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// F
 	'form_url_site' => 'Nom du site',
 	'form_date_ping' => 'Date ping',
-	'form_latence' => 'Latence',
+	'form_latence' => 'Latence (en ms)',
+	'form_poids' => 'Poids (en Kb)',
 
 	// I
 	'icone_monitor_configuration' => 'Configurer Monitor',
@@ -59,4 +60,5 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'titre_monitor_ping' => 'Activer le monitoring (ping) pour ce site',
 	'titre_monitor_poids' => 'Activer le monitoring (poids page) pour ce site',
 	'titre_page_monitor_ping' => 'Liste des sites sous monitor (ping)',
+	'titre_page_monitor_poids' => 'Liste des sites sous monitor (poids)',
 );

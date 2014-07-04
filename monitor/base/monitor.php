@@ -58,7 +58,7 @@ function monitor_declarer_tables_objets_sql($tables){
 			"id_syndic" => "bigint(21) NOT NULL",
 			"statut"	=> "varchar(255) NOT NULL default 'ping'",
 			"log" => "varchar(3) NOT NULL",
-			"latency" => "float(9,7) NOT NULL",
+			"valeur" => "varchar(255) NOT NULL",
 			"maj"	=> "TIMESTAMP"
 		),
 		'key' => array(

@@ -15,6 +15,7 @@ if (!defined("_ECRIRE_INC_VERSION")) return;
 function puce_statut_monitor_dist($id, $statut, $ajax='', $menu_rapide=_ACTIVER_PUCE_RAPIDE){
 
     $t = sql_getfetsel("statut_log", "spip_syndic", "id_syndic=" . intval($id));
+
     // cas particulier des sites en panne de ping :
     // on envoi une puce speciale, et pas de menu de changement rapide
     if ($t) {
@@ -33,9 +34,10 @@ function puce_statut_monitor_dist($id, $statut, $ajax='', $menu_rapide=_ACTIVER_
                 break;
         }
         return http_img_pack($puce, $title);
-    }
+    }   
     else
         return puce_statut_changement_rapide($id,$statut,$type,$ajax,$menu_rapide);
 }
+
 
 ?>
