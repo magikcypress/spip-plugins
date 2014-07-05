@@ -98,7 +98,9 @@ function sizePage($href) {
 }
 
 function getPage($href) {
-        $homepage = file_get_contents($href);
+        // $homepage = exec("wget -O " . $href . " >> " . _DIR_TMP . "/" .$href . ".log");
+        $homepage = exec("wget " . $href);
+        spip_log($homepage, 'test.' . _LOG_ERREUR);
 
         return $homepage;
 }
