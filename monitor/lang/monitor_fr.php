@@ -26,7 +26,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// F
 	'form_url_site' => 'Nom du site',
-	'form_date_ping' => 'Date ping',
+	'form_date_ping' => 'Date',
 	'form_latence' => 'Latence (en ms)',
 	'form_poids' => 'Poids (en Kb)',
 

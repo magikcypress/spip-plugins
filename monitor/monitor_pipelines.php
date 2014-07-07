@@ -29,9 +29,26 @@ function monitor_affiche_milieu($flux){
 				)
 		);
 		$texte .= recuperer_fond(
+				'prive/objets/contenu/monitor_details',
+				array(
+					'id_syndic'=>$id_syndic,
+					'type'=>'ping',
+					'titre'=>_T('monitor:titre_page_monitor_ping'),
+				)
+		);
+		$texte .= recuperer_fond(
+				'prive/objets/contenu/monitor_details',
+				array(
+					'id_syndic'=>$id_syndic,
+					'type'=>'poids',
+					'titre'=>_T('monitor:titre_page_monitor_poids'),
+				)
+		);
+		$texte .= recuperer_fond(
 				'prive/objets/contenu/monitor_graph',
 				array(
 					'id_syndic'=>$id_syndic,
+					'type'=>'ping',
 				)
 		);
 		if ($p=strpos($flux['data'],"<!--affiche_milieu-->"))
@@ -51,6 +68,41 @@ function monitor_affiche_milieu($flux){
 		else
 			$flux['data'] .= $texte;
 	}
+
+	return $flux;
+}
+
+/**
+ * Ajout des scripts de dc.js dans le head des pages publiques
+ *
+ * Uniquement si l'on est autorisé à l'afficher le porte plume dans
+ * l'espace public !
+ *
+ * @pipeline insert_head
+ * @param  string $flux Contenu du head
+ * @return string Contenu du head
+ */
+function monitor_insert_head_public($flux){
+	include_spip('inc/autoriser');
+	if (autoriser('afficher_public', 'dc-js')) {
+		$flux = monitor_inserer_head($flux);
+	}
+	return $flux;
+}
+
+/**
+ * Ajout des scripts de dc-js dans le head des pages privées
+ *
+ * @pipeline header_prive
+ * @param  string $flux Contenu du head
+ * @return string Contenu du head
+ */
+function monitor_insert_head_prive($flux){
+	$js_crossfilter = find_in_path('lib/dc.js/web/js/crossfilter.js');
+	$js_dcjs = find_in_path('lib/dc.js/web/js/dc.js');
+	$flux = porte_plume_inserer_head($flux, $GLOBALS['spip_lang'], $prive=true)
+		. "<script type='text/javascript' src='$js_crossfilter'></script>\n"
+		. "<script type='text/javascript' src='$js_dcjs'></script>\n";
 
 	return $flux;
 }
