@@ -1,8 +1,0 @@
-[(#REM) Compatibilite ascendante avec l'ancienne noisette ]
-                <script type="text/javascript">
-                // <![CDATA[
-                $(function() {
-                        $("#password").hashmask();
-                });
-                // ]]>
-                </script>

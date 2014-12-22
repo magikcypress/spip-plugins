@@ -1,3 +1,0 @@
-<B_statsj><:date|trim{':'}|trim:>,<:votre_avis:votre_avis|trim{':'}|trim:>
-<BOUCLE_statsj(DATA){source stats_votre_avis,jour,#ENV{duree,90},#ENV{id_rubrique},#ENV{choix}}>[(#CLE|affdate{'Y-m-d'})],[(#VALEUR{votre_avis})]
-</BOUCLE_statsj>
